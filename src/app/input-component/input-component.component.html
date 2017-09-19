@@ -1,12 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-            <!-- <form>
-                <select name="inputTypeSelect" id="inputTypeSelect">
-                    <option value="select">--- Select any Input Type ---</option>
-                    <option ngFor='let inputType of inputTypeCollection' [ngValue]='inputType.value' >{{ inputType.type }}</option>
-                </select>
-            </form> -->
+            <form name="reactForm" [formGroup]='reactiveForm'>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-4">
+                        <label for="inputTypeSelect">Select Input Type</label>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <select name="inputTypeSelect" id="inputTypeSelect" formControlName='inputTypeSelect' class="form-control">
+                                <option>--- Select any Input Type ---</option>
+                                <option *ngFor='let inputType of inputTypeCollection'>{{ inputType.type }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <button class="btn btn-success" type="button" (click)='onAddInput()'>Add Input</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

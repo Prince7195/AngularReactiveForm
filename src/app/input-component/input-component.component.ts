@@ -11,14 +11,20 @@ import { InputService } from './input.service';
 })
 export class InputComponentComponent implements OnInit {
 
-  //reactiveForm: FormGroup;
+  reactiveForm: FormGroup;
   inputTypeCollection: InputTypes[];
 
   constructor(public inputService:InputService) { } 
 
   ngOnInit() {
     this.inputTypeCollection = this.inputService.getInputTypes();
-    console.log(this.inputTypeCollection);
+    this.reactiveForm = new FormGroup({
+      "inputTypeSelect": new FormControl(null)
+    });
+  }
+
+  onAddInput() {
+    console.log("Selected Input Type: " + this.reactiveForm.value.inputTypeSelect);
   }
 
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { InputComponentComponent } from './input-component.component';
 import { InputService } from './input.service';
@@ -11,6 +11,7 @@ import { InputService } from './input.service';
     ],
     imports: [
         CommonModule,
+        FormsModule,
         ReactiveFormsModule
     ],
     exports:[InputComponentComponent],
