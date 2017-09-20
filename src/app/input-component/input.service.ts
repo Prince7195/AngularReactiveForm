@@ -7,11 +7,11 @@ export class InputService{
     private inputTypes: InputTypes[] = [
         new InputTypes('dropdown','dropdown'),
         new InputTypes('multi-dropdown','multi-dropdown'),
-        new InputTypes('input-text','input-text'),
-        new InputTypes('input-number','input-number'),
-        new InputTypes('input-email','input-email'),
-        new InputTypes('input-password','input-password'),
-        new InputTypes('input-dynamic','input-dynamic')  
+        new InputTypes('input-text','text'),
+        new InputTypes('input-number','number'),
+        new InputTypes('input-email','email'),
+        new InputTypes('input-password','password'),
+        new InputTypes('input-dynamic','dynamic')  
     ];
 
     getInputTypes = function() {
