@@ -15,9 +15,8 @@ export class InputComponentComponent implements OnInit {
   inputTypeCollection: InputTypes[];
   selectedInputType: string = '';
   inputElementsCollection = new FormArray([]);
-  generatedInputElements: number = 0;
   showSubmitBtn: boolean = false;
-
+  typeArr:Array<string> = [];
   constructor(public inputService:InputService) { } 
 
   ngOnInit() {
@@ -32,20 +31,41 @@ export class InputComponentComponent implements OnInit {
     });
   }
 
+  onFormSubmit() {    
+    console.log( this.reactiveForm );
+  }
+
   onAddInput() {
     this.selectedInputType = this.reactiveForm.value.inputTypeSelect;
-    this.generatedInputElements = this.reactiveForm.value.inputElementsArray;
-    if(this.selectedInputType !== 'dynamic' && this.selectedInputType !== 'dropdown'  && this.selectedInputType !== 'multi-dropdown') {
-      console.log( this.reactiveForm );
-      console.log( this.selectedInputType );
-      this.inputElementsCollection.push(
-        new FormGroup({
-          "inputName": new FormControl(null)
-        })
-      );
+    this.reactiveForm.value.inputElementsArray;
+    if(this.selectedInputType) {
+      if(this.selectedInputType !== 'dynamic' && this.selectedInputType !== 'dropdown'  && this.selectedInputType !== 'multi-dropdown') {
+        console.log( this.selectedInputType );
+        this.typeArr.push(this.selectedInputType)
+        this.inputElementsCollection.push(
+          new FormGroup({
+            "inputName": new FormControl(null)
+          })
+        );
+      }else if(this.selectedInputType === 'dynamic') {
+        console.log( this.selectedInputType );
+      }else if(this.selectedInputType === 'dropdown'  || this.selectedInputType === 'multi-dropdown') {
+        console.log( this.selectedInputType );
+      }
     }
-    if(this.generatedInputElements) {
+    
+    if(this.reactiveForm.value.inputElementsArray.length) {
+      console.log( this.reactiveForm.value.inputElementsArray );
       this.showSubmitBtn = true;
+    }
+  }
+
+  onRemoveElement(index) {
+    (<FormArray>this.reactiveForm.get('inputElementsArray')).removeAt(index);
+    this.typeArr.splice(index,1);
+    if(this.reactiveForm.value.inputElementsArray.length === 0) {
+      console.log( this.reactiveForm.value.inputElementsArray );
+      this.showSubmitBtn = false;
     }
   }
 
