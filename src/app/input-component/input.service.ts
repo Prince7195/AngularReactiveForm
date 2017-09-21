@@ -6,12 +6,12 @@ import { InputTypes } from './inputTypes.model';
 export class InputService{
     private inputTypes: InputTypes[] = [
         new InputTypes('dropdown','dropdown'),
-        new InputTypes('multi-dropdown','multi-dropdown'),
+        new InputTypes('multi-dropdown','multi'),
         new InputTypes('input-text','text'),
         new InputTypes('input-number','number'),
         new InputTypes('input-email','email'),
         new InputTypes('input-password','password'),
-        new InputTypes('input-dynamic','dynamic')  
+        //new InputTypes('input-dynamic','dynamic')  
     ];
 
     getInputTypes = function() {
