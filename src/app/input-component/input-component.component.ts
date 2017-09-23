@@ -44,7 +44,7 @@ export class InputComponentComponent implements OnInit {
 
   onAddInput() {
     this.selectedInputType = this.reactiveForm.value.inputTypeSelect;
-    this.reactiveForm.value.inputElementsArray;
+   // this.reactiveForm.value.inputElementsArray;
     if(this.selectedInputType) {
       this.typeArr.push(this.selectedInputType)
       this.inputElementsCollection.push(
@@ -61,7 +61,7 @@ export class InputComponentComponent implements OnInit {
 
   onRemoveElement(index) {
     (<FormArray>this.reactiveForm.get('inputElementsArray')).removeAt(index);
-    //this.typeArr.splice(index,1);
+    this.typeArr.splice(index,1);
     if(this.reactiveForm.value.inputElementsArray.length === 0) {
       console.log( this.reactiveForm.value.inputElementsArray );
       this.showSubmitBtn = false;
